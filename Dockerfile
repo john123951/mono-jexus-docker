@@ -15,17 +15,16 @@ RUN curl -O http://www.linuxdot.net/down/jexus-$JEXUS_VERSION.tar.gz && \
     cd jexus-$JEXUS_VERSION && \
     ./install 
 
-COPY packages/config /usr/jexus/siteconf
 
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -C '' -N '' && \
     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -C '' -N ''  && \
     ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -C '' -N ''
 
 RUN mkdir /www
-COPY packages/comicsansms.ttf /usr/jexus/siteconf
+COPY packages/config /usr/jexus/siteconf
 
 # install fonts
-COPY packages/config /usr/share/fonts/
+COPY packages/comicsansms.ttf /usr/share/fonts/
 RUN mkfontscale && mkfontdir && fc-cache -fv    
 
 # start 

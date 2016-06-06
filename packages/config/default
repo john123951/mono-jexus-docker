@@ -3,7 +3,7 @@
 ########################################
 
 port=80
-root=/ /www
+root=/ /www/default
 hosts=*    #OR your.com,*.your.com
 owinmain=insurance.assistant.web.dll
 
